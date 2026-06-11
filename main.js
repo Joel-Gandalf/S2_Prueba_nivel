@@ -28,6 +28,7 @@ const action = document.getElementById('action-button');
 // const insertError = document.getElementById('insertError');
 // const insertResult = document.getElementById('insertResult');
 let acumulador = '';
+const history = [];
 
 action.addEventListener('click', () => {
 
@@ -42,8 +43,8 @@ action.addEventListener('click', () => {
     show('insertError', '');
     
     const result = calculate(inputNumberValue);
-    acumulador += result + `<br>`
+    acumulador += 'El número ingresado es: '+ inputNumberValue + ', resultado: ' + result + `<br>`;
+    history.push({number: inputNumberValue, result: result});
     
     show('insertResult', acumulador);
-
-})
+});
