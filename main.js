@@ -1,9 +1,8 @@
 import { validate, calculate } from "./src/fizzbuzz-logic.js";
-import { show } from "./src/fizzbuzz-ui.js";
+import { show, renderHistory } from "./src/fizzbuzz-ui.js";
 
 const action = document.getElementById('action-button');
 
-let acumulador = '';
 const history = [];
 
 action.addEventListener('click', () => {
@@ -19,8 +18,8 @@ action.addEventListener('click', () => {
     show('insertError', '');
     
     const result = calculate(inputNumberValue);
-    acumulador += 'El número ingresado es: '+ inputNumberValue + ', resultado: ' + result + `<br>`;
+
     history.push({number: inputNumberValue, result: result});
     
-    show('insertResult', acumulador);
+    show('insertResult', renderHistory(history));
 });
