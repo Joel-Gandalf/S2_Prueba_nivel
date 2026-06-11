@@ -1,32 +1,8 @@
-const show = (id, toShow) => {
-    document.getElementById(id).innerHTML = toShow; 
-}
-
-const validate = (number, valueInString) => {
-    if (isNaN(number) || valueInString.trim() === ''){
-        return false;
-    }
-    return true;
-}
-
-const calculate = (number) => {
-    if (number % 3 === 0 && number % 5 === 0) {
-        return 'FizzBuzz';
-    }
-
-    if (number % 3 === 0) {
-        return 'Fizz';
-    }
-
-    if (number % 5 === 0) {
-        return 'Buzz';
-    }
-    return number;
-}
+import { validate, calculate } from "./src/fizzbuzz-logic.js";
+import { show } from "./src/fizzbuzz-ui.js";
 
 const action = document.getElementById('action-button');
-// const insertError = document.getElementById('insertError');
-// const insertResult = document.getElementById('insertResult');
+
 let acumulador = '';
 const history = [];
 
