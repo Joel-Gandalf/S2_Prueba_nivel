@@ -2,6 +2,13 @@ const show = (id, toShow) => {
     document.getElementById(id).innerHTML = toShow; 
 }
 
+const validate = (number, valueInString) => {
+    if (isNaN(number) || valueInString.trim() === ''){
+        return false;
+    }
+    return true;
+}
+
 const calculate = (number) => {
     if (number % 3 === 0 && number % 5 === 0) {
         return 'FizzBuzz';
@@ -25,7 +32,14 @@ let acumulador = '';
 action.addEventListener('click', () => {
 
     const inputNumber = document.querySelector(`[data-input]`);
+    const inputValueString = inputNumber.value;
     const inputNumberValue = Number(inputNumber.value);
+
+    if (!validate(inputNumberValue, inputValueString)) {
+        show('insertError', 'El valor ingresado no es válido');
+        return;   
+    }
+    show('insertError', '');
     
     const result = calculate(inputNumberValue);
     acumulador += result + `<br>`
